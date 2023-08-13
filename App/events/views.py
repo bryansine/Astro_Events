@@ -101,7 +101,7 @@ def eventDeleteView(request, id):
     event = get_object_or_404(Event, id=id)
     if request.method == 'POST':
         event.delete()
-        return redirect('profiles:profile')  # Redirect to a suitable page after deletion
+        return redirect('profiles:profile')  
     
     template = loader.get_template('events/eventEdit.html')
     context = {
