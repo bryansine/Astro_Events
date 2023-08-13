@@ -70,6 +70,23 @@
     border: 1px solid #90A4AE;
 }
 
+#eventEditParentChildDiv {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+#eventEditParentChildDiv h4{
+    padding: 0px;
+    margin-top: 6px;
+    margin-right: 50px;
+}
+
+#eventDeleteBtn {
+    color: #ffffff;
+    background: red;
+}
+
 #eventEditParent h4{ margin-bottom: 20px; }
 
 #eventEditParent form .ui.button { margin-top: 10px; }

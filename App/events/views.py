@@ -3,9 +3,9 @@ from .models import Event
 from django.template import loader
 from profiles.models import Profile
 from django.http import HttpResponse
-from django.shortcuts import redirect
 from django.core.mail import send_mail
 from .forms import EventCreationForm, EventEditForm
+from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -92,5 +92,19 @@ def eventEditView(request, id):
         'event'  : event,
         'profile': profile,
         'form'   : form,
+    }
+    return HttpResponse(template.render(context, request))
+
+
+@login_required
+def eventDeleteView(request, id):
+    event = get_object_or_404(Event, id=id)
+    if request.method == 'POST':
+        event.delete()
+        return redirect('profiles:profile')  # Redirect to a suitable page after deletion
+    
+    template = loader.get_template('events/eventEdit.html')
+    context = {
+        'event'  : event,
     }
     return HttpResponse(template.render(context, request))
