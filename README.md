@@ -1,7 +1,9 @@
 # AstroEventsSystem
 **Event ticketing application with python and django framework.**
 **installation:**
-Clone the project repository: https://github.com/bryansine/AstroEventsSystem.git -Go to Project Directory cd AstroEventsSystem
+
+Clone the project repository: https://github.com/bryansine/AstroEventsSystem.git 
+Go to Project Directory cd AstroEventsSystem
 Create a Virtual Environment : ``python -m venv env``
 Activate Virtual Environment : ``source env/bin/activate``
 Install Requirements Package : ``pip install -r requirements.txt``
