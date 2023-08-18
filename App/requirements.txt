@@ -1,2 +1,2 @@
-django==4.1.7
-django-widget-tweaks==1.4.12
+django==4.1.7 #this the framework version
+django-widget-tweaks==1.4.12 #for handling images

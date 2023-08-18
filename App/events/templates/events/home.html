@@ -9,7 +9,9 @@
 <div id="homeMainDiv">
 
   <div id="homeEventChildDiv">
-    <button class="ui secondary button" id="homeCreateBtn">Create Event</button>
+    {% if profile.role == "organizer" %}
+      <button class="ui secondary button" id="homeCreateBtn">Create Event</button>
+    {% endif %}
 
     <div class="ui success message" id="homeEventMessage">
       <div class="header">Succcess !</div>
@@ -99,10 +101,11 @@
 
     </div>
 
-    <div class="actions" id="eventActionBtns">
-      <div class="ui black deny button">Cancel</div>
-      <button class="ui secondary button" type="submit">Create</button>
-    </div>
+      <div class="actions" id="eventActionBtns">
+        <div class="ui black deny button">Cancel</div>
+        <button class="ui secondary button" type="submit">Create</button>
+      </div>
+
   </form>
 </div>
 {% endblock content %}

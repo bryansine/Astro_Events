@@ -40,6 +40,7 @@ def eventDetailView(request, id):
     event   = Event.objects.get(pk=id)
 
     profileEmail   = profile.email 
+    profileName    = profile
     senderEmail    = "bryansine1738@gmail.com"
     eventName      = event.title
     eventLocation  = event.venue
@@ -48,7 +49,7 @@ def eventDetailView(request, id):
 
     if request.method == 'POST':
         if profile not in event.attendees.all():
-            sendUUID(profileSubject, senderEmail, profileEmail, uuid, event)
+            sendUUID(profileSubject, profileName, senderEmail, profileEmail, uuid, event)
             event.attendees.add(profile)
             request.session['eventBooked'] = True
 
@@ -68,9 +69,9 @@ def generateUUID(email):
     return uuid
 
 
-def sendUUID(eventName, senderEmail, receiverEmail, uuid, eventData):
+def sendUUID(eventName, profileName, senderEmail, receiverEmail, uuid, eventData):
     subject = eventName
-    message = f'Your Ticket:\n Event Name: {eventData.title}\n Event Secret Code: {uuid}\n Event Date: {eventData.date}\n'
+    message = f'Dear {profileName},\n We hope this message finds you bursting with excitement because you are about to embark on a journey like no other! We are thrilled to present your personal ticket details for the most incredible event of the year!\n Your Ticket:\n Event Name: {eventData.title}\n Event Secret Code: {uuid}\n Event Date: {eventData.date}\n'
     send_mail(subject, message, senderEmail, [receiverEmail], fail_silently=False)
 
 

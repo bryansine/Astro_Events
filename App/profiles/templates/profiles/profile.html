@@ -5,11 +5,13 @@
 </head>
 {% block content %}
 {% include 'events/navigationBar.html' %}
+
 <div class="ui link cards" id="profileParentDiv">
     <div class="card" id="profileCard">
         <div class="image">
-            <img src={{profile.profilePicture.url}}>
+            <img src={{profile.profilePicture.url}}> {% comment %} profile picture {% endcomment %}
         </div>
+        
         <div class="content">
             <div class="header">{{profile.firstName}}  {{profile.lastName}} </div>
             <div class="meta"><a>{{profile.email}}</a></div>

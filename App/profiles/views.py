@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def profileView(request):
-    profile       = Profile.objects.get(user=request.user)
+    profile       = Profile.objects.get(user=request.user) #logged in profile
     profileEvents = Event.objects.filter(organizer=profile)
     template      = loader.get_template('profiles/profile.html')
     context  = {

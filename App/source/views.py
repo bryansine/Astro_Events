@@ -1,3 +1,4 @@
+from profiles.models import Profile
 from django.contrib.auth import authenticate, login
 from .forms import SignUpForm, EmailAuthenticationForm
 from django.shortcuts import redirect, render, redirect
@@ -21,11 +22,24 @@ def signUpView(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            # Log the user in.
+            user = form.save()  # Save the User instance
+
+            # Log the user in
             login(request, user)
-            return redirect('home:home')  # Redirect to user's profile page after successful signup.
+
+            role  = form.cleaned_data['role']  # Get the selected role from the form data
+            email = form.cleaned_data['email']  # Get the email from the form data
+            print("User Role:", role)
+            print("User Email:", email)
+            
+            # Create a Profile instance and associate it with the user
+            profile = user.profile  # Access the Profile instance through the OneToOneField
+            profile.role = role
+            profile.email = email
+            profile.save()
+            
+            return redirect('home:home')  # Replace 'home' with the appropriate URL name
     else:
         form = SignUpForm()
-    return render(request, 'authentication/signup.html', { 'form': form })
+    return render(request, 'authentication/signup.html', {'form': form})
 

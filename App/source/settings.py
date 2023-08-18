@@ -102,6 +102,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "staticDir", "mediaFiles")
 LOGIN_REDIRECT_URL  = 'home:home'
 LOGOUT_REDIRECT_URL = 'home:home'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

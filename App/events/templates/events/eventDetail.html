@@ -16,7 +16,7 @@
       <div class="meta"><span class="date">{{event.venue}}</span></div>
       <div class="description">{{event.description}}</div>
      
-      {% if event.attendees.count <= event.size %}
+      {% if event.attendees.count <= event.size and profile.role == "attendee" %}
         <button class="ui secondary button" type="submit" id="eventDetailsBookBtn">Book Now</button>
       {% endif %}
     </div>
