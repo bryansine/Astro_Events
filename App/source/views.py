@@ -24,22 +24,20 @@ def signUpView(request):
         if form.is_valid():
             user = form.save()  # Save the User instance
 
-            # Log the user in
-            login(request, user)
-
-            role  = form.cleaned_data['role']  # Get the selected role from the form data
-            email = form.cleaned_data['email']  # Get the email from the form data
-            print("User Role:", role)
-            print("User Email:", email)
-            
             # Create a Profile instance and associate it with the user
-            profile = user.profile  # Access the Profile instance through the OneToOneField
+            profile = Profile.objects.create(user=user)  # Create the profile instance
+            role = form.cleaned_data['role']
+            email = form.cleaned_data['email']
             profile.role = role
             profile.email = email
             profile.save()
-            
+
+            # Log the user in
+            login(request, user)
+
             return redirect('home:home')  # Replace 'home' with the appropriate URL name
     else:
         form = SignUpForm()
+
     return render(request, 'authentication/signup.html', {'form': form})
 

@@ -1,1 +1,3 @@
-
+# Exclude the EventPoster folder and profile pictures
+staticDir/EventPoster/
+staticDir/ProfilePictures/
