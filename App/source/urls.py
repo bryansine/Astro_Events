@@ -10,6 +10,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('signup/',signUpView, name='signup'),
+    path('accounts/signup/', signUpView, name='signup'),
+    path('', include('base.urls')), # added a base url
     path('home/', include('events.urls', namespace='events')),
     path('profiles/', include('profiles.urls', namespace='profiles')),
     #For Password Reset

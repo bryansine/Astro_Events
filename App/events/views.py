@@ -18,7 +18,7 @@ def homeView(request):
         if form.is_valid():
             event = form.save(commit=False)
             event.organizer = profile  
-            event.ksh = float(event.price) * 142.58
+            event.ksh = float(event.price) * 133.00
             event.save()
             event.attendees.add(profile)  
 

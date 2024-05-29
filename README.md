@@ -7,6 +7,7 @@
 2. Go to the project directory: ``cd AstroEventsSystem``
 3. Create a Virtual Environment: ``python3 -m venv env``
 4. Activate the Virtual Environment: ``source env/bin/activate``
+5. install django                   : ``pip install django``
 5. Install Required Packages: ``pip install -r requirements.txt``
 6. Migrate the Database: ``python manage.py migrate``
 7. Create a Super User: ``python manage.py createsuperuser``

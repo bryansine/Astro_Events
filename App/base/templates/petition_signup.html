@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign the Petition</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .heading {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .petition-form {
+            margin-bottom: 20px;
+        }
+        
+        .btn-sign {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn-sign:hover {
+            background-color: #0056b3;
+        }
+        
+        .messages {
+            margin-top: 10px;
+        }
+        
+        .message {
+            padding: 10px;
+            margin-bottom: 5px;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="heading">Sign the Petition</h2>
+        <form method="post" class="petition-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn-sign">Sign the Petition</button>
+        </form>
+        <div class="messages">
+            {% for message in messages %}
+            <div class="message">{{ message }}</div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

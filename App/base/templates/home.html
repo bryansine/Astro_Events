@@ -1,0 +1,378 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astro Events</title>
+    <link rel="icon" href="{% static 'images/favicon1.ico' %}" type="image/x-icon">
+    <style>
+        body {
+            background: linear-gradient(45deg, #333, #555, #777);
+            background-size: 600% 600%;
+            animation: gradientBackground 10s ease infinite;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Arial, sans-serif';
+        }
+
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: darkgray;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .brand-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: #343a40;
+            margin-right: 10px;
+        }
+
+        .header .motto{
+            font-size: 14px;
+            color: #fff;
+            font-style: italic;
+        }
+
+        .header .nav-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .header .nav-links a {
+            text-decoration: none;
+            color: #007bff;
+            padding: 5px 10px;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .header .nav-links a:hover {
+            background-color: aquamarine;
+            color: white;
+        }
+
+        .content {
+            padding: 20px;
+            text-align: center;
+            margin-top: 60px;
+            flex: 1;
+        }
+
+        .brand {
+            font-size: 4em;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            animation: fadeIn 2s ease-out;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .brand span {
+            display: inline-block;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .brand span:nth-child(odd) {
+            animation-delay: 0.1s;
+        }
+
+        .brand span:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+
+        .brand:hover {
+            animation: colorChange 2s infinite, rotate 1s infinite;
+        }
+
+        @keyframes colorChange {
+            0% { color: #fff; }
+            25% { color: #ff6347; }
+            50% { color: #ffa500; }
+            75% { color: #ff6347; }
+            100% { color: #fff; }
+        }
+
+        @keyframes rotate {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+        }
+
+        .brand:before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: #ff6347;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .brand:hover:before {
+            width: 100%;
+            left: 0;
+        }
+
+        .brand:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            right: 50%;
+            background-color: #ffa500;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .brand:hover span {
+            animation: hoverBounce 0.6s infinite alternate;
+            text-shadow: 2px 2px 5px #ff6347, -2px -2px 5px #ffa500;
+        }
+
+        @keyframes hoverBounce {
+            0% { transform: translateZ(0); }
+            100% { transform: translateZ(15px); }
+        }
+
+        .events-highlights {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .events-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .event-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px;
+            max-width: 400px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .event-card:hover {
+            background-color: #333;
+            color: white;
+        }
+
+        .event-card img {
+            border-radius: 10px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .event-card h3 {
+            margin: 15px 0;
+            color: #333;
+        }
+
+        .event-card p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+            transition: background-color 0.3s;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <section class="yote">
+        <div class="brand">.</div>
+
+    </section>
+
+       
+    
+    <div class="brand">Astro_Events</div>
+
+    
+    <div class="header">
+        <div class="brand-container">
+            <div class="brand">Astro_Events</div>
+            <div class="motto">Discover. Experience. Enjoy.</div>
+
+        </div>
+        <div class="nav-links">
+            <div>Support us in the fight for the freedom of culture. <a href="{% url 'petition_signup' %}">sign the petition</a></div>          
+            <a href="{% url 'login' %}">View Events</a>
+            
+            <a href="{% url 'signup' %}">Sign up</a>
+            <a href="{% url 'login' %}">Sign in</a>
+            <a href="{% url 'about' %}">About us</a>
+        </div>
+    </div>
+    <div class="content">
+        <section class="events-highlights">
+            <div class="container">
+                <h2>Upcoming Events</h2>
+            </div>
+        <section class="hero">
+            <div class="event-card">
+                <a href="{% url 'signup' %}"><img src="{% static 'images/sol fest.webp' %}" alt="Event" loading="lazy" height="150px" width="250px"></a>
+                <h3>Sol Festival</h3>
+                <p>June 25, 2024</p>
+                <p>Time: 10:00 AM - 8:00 PM</p>
+                <p>Location: Ngong Race course, Nairobi City</p>
+                <p>Solfest is an established award-winning family festival, overlooking the sea, nestled between the mountains of The Lake District and ....</p>
+                <p style="color: blue;" data-tooltip="Help">Promoted <i class="fas fa-question-circle"></i></p>
+            </div>
+        </section>
+        <section class="hero">
+            <div class="event-card">
+                <a href="{% url 'signup' %}"><img src="{% static 'images/golf.jpeg' %}" alt="Event 2"></a>
+                <h3>Karen Golf Club</h3>
+                <p>July 10, 2024</p>
+                <p>Time: 10:00 AM - 8:00 PM</p>
+                <p>Location: Garden city Park, Nairobi City</p>
+                <p>The Karen Country Club is a well established and exclusive, family oriented club with a proud history spanning over....</p>
+                <p style="color: blue;" data-tooltip="Help">Promoted <i class="fas fa-question-circle"></i></p>
+
+            </div>
+        </section>
+        <section class="hero">
+            <div class="event-card">
+                <a href="{% url 'signup' %}"><img src="{% static 'images/horse_riding.jpeg' %}" alt="Event 3"></a>
+                <h3>Horse Riding</h3>
+                <p>August 5, 2024</p>
+                <p>Time: 9:00 AM - 6:00 PM</p>
+                <p>Location: Karura Forest, Nairobi City</p>
+                <p>Book Horse Riding and Equestrian Experience in Karura Forest online with EVENDO. Full Refund Available up to 24 Hours Before Your....</p>
+                <p style="color: blue;" data-tooltip="Help">Promoted <i class="fas fa-question-circle"></i></p>
+            </div>
+        </section>
+        <section class="hero">
+            <div class="event-card">
+                <a href="{% url 'signup' %}"><img src="{% static 'images/hiking.jpeg' %}" alt="Event 4"></a>
+                <h3>Hiking</h3>
+                <p>September 15, 2024</p>
+                <p>Time: 7:00 AM - 3:00 PM</p>
+                <p>Location: Mt. Longonot, Nakuru</p>
+                <p>Find &amp; Book the Best Things to Do in Mount Longonot. Tours, Activities, Excursions in Mount Longonot. Quick &amp; Easy Purchase Process!....</p>
+                <p style="color: blue;" data-tooltip="Help">Promoted <i class="fas fa-question-circle"></i></p>
+            </div>
+        </section>
+        <section class="hero">
+            <div class="event-card">
+                <a href="{% url 'signup' %}"><img src="{% static 'images/expo.jpeg' %}" alt="Event 5"></a>
+                <h3>Expo</h3>
+                <p>October 20, 2024</p>
+                <p>Time: 9:00 AM - 5:00 PM</p>
+                <p>Location: KICC, Nairobi City</p>
+                <p>Nairobi International Trade Fair (NITF) is one of the major events in the ASK calendar and started in 1901. This is the....</p>
+                <p style="color: blue;" data-tooltip="Help">Promoted <i class="fas fa-question-circle"></i></p>
+            </div>
+        </section>
+        <section class="hero">
+            <div class="event-card">
+                <a href="{% url 'signup' %}"><img src="{% static 'images/mountain_climbing.jpeg' %}" alt="Event 6"></a>
+                <h3>Mountain Climbing</h3>
+                <p>November 11, 2024</p>
+                <p>Time: 6:00 AM - 6:00 PM</p>
+                <p>Location: Mt. Kenya, Kirinyaga</p>
+                <p>Find the Best Hiking Climbing Routes to Mount Kenya, Africa's second highest mountain, is regarded as the most challenging technical climb on....</p>
+                <p style="color: blue;" data-tooltip="Help">Promoted <i class="fas fa-question-circle"></i></p>
+            </div>
+        </section>
+        <section class="hero">
+            <div class="event-card">
+                <a href="{% url 'signup' %}"><img src="{% static 'images/festival.webp' %}" alt="Event 7"></a>
+                <h3>Festival</h3>
+                <p>December 25, 2024</p>
+                <p>Time: 10:00 AM - 8:00 PM</p>
+                <p>Location: Uhuru Park, Nairobi City</p>
+                <p>Get to experience amazing and fun festivals from great artists and bands. Great foods and ...</p>
+                <p style="color: blue;" data-tooltip="Help">Promoted <i class="fas fa-question-circle"></i></p>
+            </div>
+        </section>
+        
+        {% comment %} <section class="yangu">
+            <div class="yame">
+                <h2>Help</h2>
+                <p> incase you want help with the event you might need to go the  <a href="{% url 'about' %}">about us</a> to check more about us and also engage with the community to see whats happening!</p>
+                <p>The astro-events marketing system is what the world needs now</p>
+                <p>Your gateway to knowledge and culture. Accessible for everyone. </p>
+                <p>You can donate </p>
+            </div>
+        </section> {% endcomment %}
+
+        <section class="hero">
+            <a href="{% url "signup" %}" class="btn btn-secondary" title="sign up first to explore more events">View More Events</a>
+        </section>
+          
+    </div>
+</div>
+    <footer>
+        &copy; 2024 Astro Events. All rights reserved.
+    </footer>
+</body>
+</html>

@@ -5,7 +5,7 @@
 <div class="ui secondary pointing menu" id="navbarMainDiv">
   <a class="item" href="{% url 'events:home' %}"><b>Home</b></a>
   <a class="item" href="{% url 'profiles:profile' %}" ><b>{{profile.user}}</b></a>
-  <a class="item" href="{% url 'login' %}"><b>Log Out</b></a>
+  <a class="item" href="{% url 'home' %}">Hello, {{ profile.user }}. <b> Log Out</b></a>
 </div>
 {% endblock content %}
 {% block scripts %}

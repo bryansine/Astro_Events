@@ -21,37 +21,38 @@
 
   <div id="homeEventDiv">
     {% for event in events %}
-      <div class="ui card" id="homeEventCard">
-        <div class="image"><img src={{event.poster.url}}></div>
+  <div class="ui card" id="homeEventCard">
+    {% if event.poster %}
+      <div class="image"><img src="{{ event.poster.url }}"></div>
+    {% endif %}
 
-        <div class="content">
+    <div class="content">
+      <a class="header">{{ event.title }} || {{ event.date }}</a>
+      <div class="meta"><span class="date">{{ event.venue }}</span></div>
+      <div class="description">{{ event.description }}</div>
+      
+      <a class="item" href="{% url 'home:eventDetail' event.id %}">
+        <button class="ui right labeled icon button" id="eventDetailBtn">
+          <i class="add icon"></i>
+          Details
+        </button>
+      </a>
+    </div>
+    
+    <div class="extra content"><a><i class="user icon"></i>{{ event.size }} Attendees</a></div>
+    <div class="extra content"><a><i class="dollar sign icon"></i>{{ event.price }}</a></div>
+    <div class="extra content"><a>Ksh : {{ event.ksh }}</a></div>
+  </div>
+{% empty %}
+  <div class="ui icon message">
+    <i class="inbox icon"></i>
+    <div class="content">
+      <div class="header">Discover a World of Possibilities!</div>
+      <p>While there are no events currently scheduled, our team is working diligently to bring you exciting and unforgettable experiences. </p>
+    </div>
+  </div>
+{% endfor %}
 
-          <a class="header">{{event.title}} || {{event.date}}</a>
-          <div class="meta"><span class="date">{{event.venue}}</span></div>
-          <div class="description">{{event.description}}</div>
-         
-          <a class="item" href="{% url 'home:eventDetail' event.id %}">
-            <button class="ui right labeled icon button" id="eventDetailBtn">
-              <i class="add icon"></i>
-              Details
-            </button>
-          </a>
-        </div>
-        
-        <div class="extra content"><a><i class="user icon"></i>{{event.size}} Attendees</a></div>
-        <div class="extra content"><a><i class="dollar sign icon"></i>{{event.price}}</a></div>
-        <div class="extra content"><a>Ksh : {{event.ksh}}</a></div>
-      </div>
-
-    {% empty %}
-      <div class="ui icon message">
-        <i class="inbox icon"></i>
-        <div class="content">
-          <div class="header">Discover a World of Possibilities!</div>
-          <p>While there are no events currently scheduled, our team is working diligently to bring you exciting and unforgettable experiences. </p>
-        </div>
-      </div>
-    {% endfor %}
    
   </div>
 
