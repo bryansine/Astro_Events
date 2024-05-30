@@ -7,7 +7,7 @@ from django.contrib.auth.forms import AuthenticationForm
 class EmailAuthenticationForm(AuthenticationForm):
     username = forms.CharField(max_length=254, widget=forms.TextInput(attrs={'autofocus': True, 'placeholder': 'Username'}))
 
-class SignUpForm(UserCreationForm):
+class SignUpForm(UserCreationForm): #signup form
     email = forms.EmailField(max_length=150, required=True, help_text='Required. Enter a valid email address.')
     role = forms.ChoiceField(
         choices =PROFILE_TYPE_CHOICES,
@@ -16,7 +16,7 @@ class SignUpForm(UserCreationForm):
         )
     class Meta:
         model  = User
-        fields = ('username', 'role', 'email', 'password1', 'password2')
+        fields = ('username', 'role', 'email', 'password1', 'password2') # class fields
 
 
 

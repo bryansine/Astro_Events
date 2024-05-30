@@ -7,7 +7,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 
 @login_required
-def profileView(request):
+def profileView(request): # profile view
     profile       = Profile.objects.get(user=request.user) #logged in profile
     profileEvents = Event.objects.filter(organizer=profile)
     template      = loader.get_template('profiles/profile.html')
@@ -19,7 +19,7 @@ def profileView(request):
 
 
 @login_required
-def editProfile(request):
+def editProfile(request):  # editing profile
     profile  = Profile.objects.get(user=request.user)
     form     = EditForm(request.POST or None, request.FILES or None, instance=profile)
     if request.method == 'POST':

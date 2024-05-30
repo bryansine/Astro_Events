@@ -1,5 +1,5 @@
 from django import forms
-from .models import Event
+from .models import Event # import models in the current module
 
 class EventCreationForm(forms.ModelForm):
     class Meta:
@@ -10,7 +10,7 @@ class EventCreationForm(forms.ModelForm):
             'date'       :forms.TextInput(attrs={'type':'datetime-local'}),
         }
 
-class EventEditForm(forms.ModelForm):
+class EventEditForm(forms.ModelForm): # EventEditForm required
     class Meta:
         model = Event
         fields = ['title', 'description', 'poster', 'venue', 'date', 'size', 'price']

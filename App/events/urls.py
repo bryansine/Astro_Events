@@ -9,3 +9,5 @@ urlpatterns = [
     path('<int:id>/edit/', views.eventEditView, name='eventEdit'),
     path('<int:id>/delete/', views.eventDeleteView, name='eventDelete'),
 ]
+
+# url patterns for events

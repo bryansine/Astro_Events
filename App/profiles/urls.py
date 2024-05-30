@@ -7,3 +7,6 @@ urlpatterns = [
     path('', profileView, name='profile'),
     path('edit/', editProfile, name='editProfile'),
 ]
+
+
+# url patterns for profiles

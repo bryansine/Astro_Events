@@ -14,6 +14,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    
 }
 
 #homeEventMessage{ 
@@ -84,7 +85,8 @@
 
 #eventDeleteBtn {
     color: #ffffff;
-    background: red;
+    background: rgba(255, 0, 0, 0.801);
+    border: none;
 }
 
 #eventEditParent h4{ margin-bottom: 20px; }

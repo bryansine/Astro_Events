@@ -9,6 +9,7 @@ from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+
 @login_required
 def homeView(request):
     profile = Profile.objects.get(user=request.user)
@@ -18,14 +19,14 @@ def homeView(request):
         if form.is_valid():
             event = form.save(commit=False)
             event.organizer = profile  
-            event.ksh = float(event.price) * 133.00
+            event.ksh = float(event.price) * 133.50
             event.save()
             event.attendees.add(profile)  
 
             # Set a flag in the session to indicate a successful event creation
             request.session['eventCreated'] = True
 
-    template = loader.get_template('events/home.html')
+    template = loader.get_template('events/home.html') # load template
     context  = {
         "profile": profile,
         'form'   : form,

@@ -1,7 +1,7 @@
 from django.db import models
 from profiles.models import Profile
 
-# Create your models here.
+# create models here
 class Event(models.Model):
     organizer   = models.ForeignKey(Profile, related_name='organizer', on_delete=models.CASCADE)
     attendees   = models.ManyToManyField(Profile, blank=True, default=None, related_name='attendees')
@@ -21,3 +21,4 @@ class Event(models.Model):
     
     class Meta:
         ordering = ('-created',)
+        
