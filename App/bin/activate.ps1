@@ -1,5 +1,5 @@
-$script:THIS_PATH = $myinvocation.mycommand.path
-$script:BASE_DIR = Split-Path (Resolve-Path "$THIS_PATH/..") -Parent
+$script:THIS_PATH = $myinvocation.mycommand.path # this is the path to the script file
+$script:BASE_DIR = Split-Path (Resolve-Path "$THIS_PATH/..") -Parent # this is the path to the base directory
 
 function global:deactivate([switch] $NonDestructive) {
     if (Test-Path variable:_OLD_VIRTUAL_PATH) {
@@ -35,7 +35,7 @@ $env:VIRTUAL_ENV = $VIRTUAL_ENV
 
 New-Variable -Scope global -Name _OLD_VIRTUAL_PATH -Value $env:PATH
 
-$env:PATH = "$env:VIRTUAL_ENV/bin:" + $env:PATH
+$env:PATH = "$env:VIRTUAL_ENV/bin:" + $env:PATH # this is the path to the new variable
 if (!$env:VIRTUAL_ENV_DISABLE_PROMPT) {
     function global:_old_virtual_prompt {
         ""
@@ -44,7 +44,7 @@ if (!$env:VIRTUAL_ENV_DISABLE_PROMPT) {
 
     if ("" -ne "") {
         function global:prompt {
-            # Add the custom prefix to the existing prompt
+            # Add the custom prefix to the existing prompt string
             $previous_prompt_value = & $function:_old_virtual_prompt
             ("() " + $previous_prompt_value)
         }
