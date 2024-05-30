@@ -101,5 +101,9 @@ To set up the project locally, follow these steps:
 6. PostgreSQL: Database
 7. SendGrid: Email service for notifications
 
+
+## contributers
+1. Bryan sine
+
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
