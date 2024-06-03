@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/sine/Desktop/projects/AstroEventsSystem/myvenv"
+VIRTUAL_ENV="/home/sine/Desktop/projects/try1/myvenv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

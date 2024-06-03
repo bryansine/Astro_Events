@@ -1,4 +1,4 @@
-#!/home/sine/Desktop/projects/AstroEventsSystem/myvenv/bin/python3
+#!/home/sine/Desktop/projects/try1/myvenv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
