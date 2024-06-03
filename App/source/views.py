@@ -36,7 +36,7 @@ def signUpView(request): # signup function
             # Log the user in
             login(request, user)
 
-            return redirect('home:home')  # Replace 'home' with the appropriate URL name
+            return redirect('home:home')  # 
     else:
         form = SignUpForm()
 

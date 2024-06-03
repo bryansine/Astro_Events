@@ -63,17 +63,49 @@ def eventDetailView(request, id):
     return HttpResponse(template.render(context, request))
 
 
+# def generateUUID(email):
+#     hashObject = hashlib.sha1(email.encode())
+#     hexDigit   = hashObject.hexdigest()
+#     uuid       = '-'.join([hexDigit[:3], hexDigit[4:7], hexDigit[8:11]])
+#     return uuid
+
+
+# def sendUUID(eventName, profileName, senderEmail, receiverEmail, uuid, eventData):
+#     subject = eventName
+#     message = f'Dear {profileName}'
+#     send_mail(subject, message, senderEmail, [receiverEmail], fail_silently=False)
+
+
 def generateUUID(email):
     hashObject = hashlib.sha1(email.encode())
-    hexDigit   = hashObject.hexdigest()
-    uuid       = '-'.join([hexDigit[:3], hexDigit[4:7], hexDigit[8:11]])
+    hexDigit = hashObject.hexdigest()
+    uuid = '-'.join([hexDigit[:3], hexDigit[3:6], hexDigit[6:9]])
     return uuid
 
-
 def sendUUID(eventName, profileName, senderEmail, receiverEmail, uuid, eventData):
-    subject = eventName
-    message = f'Dear {profileName},\n We hope this message finds you bursting with excitement because you are about to embark on a journey like no other! We are thrilled to present your personal ticket details for the most incredible event of the year!\n Your Ticket:\n Event Name: {eventData.title}\n Event Secret Code: {uuid}\n Event Date: {eventData.date}\n'
+    subject = f"🎉 {eventName} - Your Ticket Details Inside!"
+    message = f"""
+    Hi {profileName},
+
+    We hope you're as excited as we are because you’re about to experience an unforgettable event! 🎟️✨
+
+    Here are your exclusive ticket details:
+
+    **Event Name:** {eventData.title}
+    **Secret Code:** {uuid}
+    **Date:** {eventData.date.strftime('%A, %B %d, %Y')}
+    
+    Make sure to keep this secret code safe. It's your golden ticket to an amazing time!
+
+    We're thrilled to have you join us and can't wait to see you there!
+
+    Best regards,
+    The {eventName} Team
+    """
+
     send_mail(subject, message, senderEmail, [receiverEmail], fail_silently=False)
+
+
 
 
 @login_required
@@ -110,3 +142,4 @@ def eventDeleteView(request, id):
         'event'  : event,
     }
     return HttpResponse(template.render(context, request))
+

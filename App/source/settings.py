@@ -1,6 +1,9 @@
 import os
 from pathlib import Path
 
+# load_dotenv()
+# SENDGRID_API_KEY = os.getenv('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')
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 

@@ -18,5 +18,5 @@ class EventEditForm(forms.ModelForm): # EventEditForm required
             'description': forms.Textarea(attrs={'class': 'form-control'}),
             'date'       :forms.TextInput(attrs={'type':'datetime-local'}),
         }
-
-
+        
+        
