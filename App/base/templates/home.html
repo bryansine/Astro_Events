@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Astro Events</title>
     <link rel="icon" href="{% static 'images/favicon1.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
     <style>
         body {
             background: linear-gradient(45deg, #333, #555, #777);
@@ -231,60 +232,26 @@
         .btn-explore:hover {
             background-color: #e5533c;
         }
-         /* About section styles */
-         .about {
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 10px;
-            padding: 20px;
-            margin: 40px 0;
-            text-align: left;
+        /*container style*/
+        .container {
+            background:transparent; 
         }
-
-        .about h2 {
-            color: #ff6347;
-            margin-top: 0;
-        }
-
-        .about p {
-            margin: 10px 0;
-            color: #ddd;
-        }
-
-        .about nav#ui {
-            margin-top: 20px;
-        }
-
-        .about nav#ui ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .about nav#ui ul li {
-            margin: 10px 0;
-        }
-
-        .about nav#ui ul li a {
-            color: #ff6347;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .about nav#ui ul li a:hover {
-            color: #e5533c;
-        }
+        
     </style>
 </head>
 <body>
+
     <section id="intro">
         <div class="cover-image">
-            <img src="{% static 'images/coverimage.webp' %}" alt="Astro Events Cover Image"> <!-- ill add a quality cover image here -->
+            <img src=" {% static "images/4.jpeg" %}" alt="Astro Events Cover Image"> 
         </div>
         <div class="intro-text">
             <h1>Astro Events</h1>
             <p>Discover amazing events, experience unforgettable moments, and enjoy everything we have to offer.</p>
-            <a href="{% url 'login' %}" class="btn-explore">Explore Astro Events</a> <!-- ill add the link here once i've deployed the project-->
+            <a href="{% url "signup" %}" class="btn-explore">Explore Astro Events</a> 
         </div>
     </section>
+  
     
     <div class="header">
         <div class="brand-container">
@@ -292,71 +259,15 @@
             <div class="motto">Discover. Experience. Enjoy.</div>
         </div>
         <div class="nav-links">
-            <div>Support us in the fight for the freedom of culture. <a href="{% url 'petition_signup' %}">Sign the petition</a></div>
-            <a href="{% url 'login' %}">View Events</a>
-            <a href="{% url 'signup' %}">Sign up</a>
-            <a href="{% url 'login' %}">Sign in</a>
-            <a href="{% url 'about' %}">About us</a>
+            <div>Support us in the fight for the freedom of culture. <a href="{% url "petition_signup" %}">Sign the petition</a></div>
+            <a href="{% url "signup" %}">View Events</a>
+            <a href=" {% url "signup" %}">Sign up</a>
+            <a href="{% url "login" %}">Sign in</a>
+            <a href="/about/">About us</a>
         </div>
     </div>
     <div class="content">
-        {% comment %} <section class="hero">
-            <div class="brand">Astro Events</div>
-            <h1>Welcome to Astro Events</h1>
-            <p>Discover amazing events, experience unforgettable moments, and enjoy everything we have to offer.</p>
-            <a href="{% url 'signup' %}" class="btn">Get Started</a>
-        </section> {% endcomment %}
-
-        <section class="features">
-            <div class="feature">
-                <img src="{% static 'images/sign_petition.png' %}" alt="Sign Petition Image">
-                <h3>Sign Petition for Event Culture</h3>
-                <p>This feature enables users to sign a petition advocating for the freedom and promotion of event culture. By signing the petition, users contribute to the support and growth of diverse cultural events, fostering community engagement and celebration.</p>
-            </div>
-            <div class="feature">
-                <img src="{% static 'images/crud_operations.png' %}" alt="Event Organizers CRUD Operations Image">
-                <h3>Event Organizers CRUD Operations</h3>
-                <p>Event organizers can perform CRUD (Create, Read, Update, Delete) operations seamlessly through the app. This includes creating new events, updating event details, managing bookings, and deleting outdated events, providing organizers with complete control over their events.</p>
-            </div>
-            <div class="feature">
-                <img src="{% static 'images/view_book_events.png' %}" alt="View and Book Events Image">
-                <h3>View and Book Events</h3>
-                <p>Users (attendees) can view detailed information about events, including event descriptions, dates, locations, and available tickets. They can easily book their desired events directly through the app, ensuring a smooth and convenient booking experience.</p>
-            </div>
-        </section>
-         <!-- About Section -->
-         <section class="about">
-            <h2>Mission</h2>
-            <p>
-                At Astro Events, our mission is to simplify event marketing and management. We strive to provide a seamless experience for both event organizers and attendees, ensuring that every event is a success. Whether you're hosting a small gathering or a large conference, our platform offers the tools you need to plan, promote, and execute your events flawlessly.
-            </p>
-            <h2>Our Story</h2>
-            <p>
-                Astro Events was born out of a passion for connecting people and creating memorable experiences. As a software engineering student at ALX-Holberton School, I embarked on this project within a month to showcase my skills and create a practical solution for event management.
-            </p>
-            <p>
-                The inspiration behind Astro Events came from my own experiences attending and organizing events. I realized the need for a user-friendly platform that streamlines the entire event lifecycle, from planning and promotion to registration and attendee engagement.
-            </p>
-            <p>
-                This project is not just a requirement for Holberton School; it's a personal endeavor to contribute something meaningful to the community. I wanted to create a platform that empowers event organizers and attendees alike, making event culture more accessible and enjoyable for everyone.
-            </p>
-            <h2>Team</h2>
-            <p>
-                I am a dedicated developer with a diverse background in technology, marketing, and event management. My collective expertise allows me to understand the unique challenges of event planning and deliver a platform that meets the needs of the users.
-            </p>
-            <h2>Get in Touch</h2>
-            <p>
-               I'd love to hear from you! Whether you have a question about the platform, need assistance, or just want to share your feedback, feel free to reach out to me. Connect with me through my contact page or follow me on social media to stay updated with the latest news and features.
-            </p>
-            <nav id="ui">
-                <ul>
-                    <li>Check out my <a href="https://www.instagram.com/">Instagram</a> page</li>
-                    <li>Check out my <a href="https://x.com/Walterrayo1738">Twitter</a> page</li>
-                    <li>Check out my <a href="https://www.linkedin.com/in/bryan-sine-53432b1b1/">LinkedIn</a> page</li><br>
-                    <li><a href="https://github.com/bryansine/Astro_events">GitHub Repository - Astro Events</a></li> 
-                </ul>
-            </nav>
-        </section>        
+        
 
 
         <section class="events-highlights">
@@ -365,31 +276,31 @@
             </div>
             <div class="events-grid">
                 <div class="event-card">
-                    <a href="{% url 'signup' %}"><img src="{% static 'images/sol fest.webp' %}" alt="Event" loading="lazy" height="150px" width="250px"></a>
+                    <a href="{% url "signup" %}"><img src="{% static 'images/sol fest.webp' %}" alt="Event" loading="lazy" height="150px" width="250px"></a>
                     <h3>Sol Festival</h3>
                     <p>June 20, 2024</p>
                     <p>Time: 10:00 AM - 9:00 PM</p>
                     <p>Location: Sol Plaza, Nairobi City</p>
                     <p>Join us for the Sol Festival, a day of music, art, and culture celebrating the summer solstice.</p>
-                    <a href="{% url 'signup' %}" class="btn btn-secondary">View More</a>
+                    <a href="{% url "signup" %}" class="btn btn-secondary">View More</a>
                 </div>
                 <div class="event-card">
-                    <a href="{% url 'signup' %}"><img src="{% static 'images/temple.jpeg' %}" alt="Event" loading="lazy" height="150px" width="250px"></a>
+                    <a href="{% url "signup" %}"><img src=" {% static "images/temple.jpeg" %}" alt="Event" loading="lazy" height="150px" width="250px"></a>
                     <h3>Temple of Youth</h3>
                     <p>July 2, 2024</p>
                     <p>Time: 2:00 PM - 5:00 PM</p>
                     <p>Location: Fila, Nairobi City</p>
                     <p>Temple of Youth is an event dedicated to young individuals looking to make a difference in their communities. Join us for a day of inspiration, networking, and empowerment.</p>
-                    <a href="{% url 'signup' %}" class="btn btn-secondary">View More</a>
+                    <a href="{% url "signup" %}" class="btn btn-secondary">View More</a>
                 </div>
                 <div class="event-card">
-                    <a href="{% url 'signup' %}"><img src="{% static 'images/art.png' %}" alt="Event" loading="lazy" height="150px" width="250px"></a>
+                    <a href="{% url "signup" %}"><img src=" {% static 'images/art.png' %}" alt="Event" loading="lazy" height="150px" width="250px"></a>
                     <h3>Art Festival</h3>
                     <p>August 15, 2024</p>
                     <p>Time: 9:00 AM - 6:00 PM</p>
                     <p>Location: Craft Central, Nairobi City</p>
                     <p>Experience the best of local and international art at the Art Festival. From paintings to sculptures, this event showcases diverse artistic expressions.</p>
-                    <a href="{% url 'signup' %}" class="btn btn-secondary">View More</a>
+                    <a href="{% url "signup" %}" class="btn btn-secondary">View More</a>
                 </div>
             </div>
         </section>
