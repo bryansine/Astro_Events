@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import signUpView, login_view
-from base.views import home
+# from base.views import home
 from django.urls import include
 from django.contrib import admin
 from django.conf import settings
@@ -10,7 +10,7 @@ from django.contrib.auth import views as auth_views
 # base urls
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', home, name='home'),
+    # path('home/', home, name='home'),
     path('login/', login_view, name='login'),
     path('signup/',signUpView, name='signup'),
     path('accounts/login/', login_view, name='login'),

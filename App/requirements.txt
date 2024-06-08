@@ -1,2 +1,0 @@
-Django==5.0.6 #this framework version is 5.0.6 for django
-django-widget-tweaks==1.5.0 #for handling images and other stuff

@@ -127,20 +127,41 @@ LOGOUT_URL = '/logout/'
 # login settings for redirecting ater successfull login
 
 LOGIN_REDIRECT_URL  = 'home:home'
-LOGOUT_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home:home'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#For Sending Email with SMTP
-EMAIL_HOST          = 'smtp.gmail.com'
-EMAIL_BACKEND       = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST_USER     = "bryansine1738@gmail.com" # Email
-EMAIL_HOST_PASSWORD = 'gqemhqaxznoyykgs' # Password
-EMAIL_USE_TLS       = True
-EMAIL_PORT          = 587
+
+
+# configuration For Sending Email with SMTP
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'astroevents0@gmail.com'   
+EMAIL_HOST_PASSWORD = 'tton rxoy klzx jxho'  # app password for 'astroevents0@gmail.com'
+DEFAULT_FROM_EMAIL = 'astroevents0@gmail.com'
+
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST_USER = "bryansine1738@gmail.com"  # Login email
+# EMAIL_HOST_PASSWORD = 'gqemhqaxznoyykgs'  # App-specific password
+# EMAIL_USE_TLS = True
+# EMAIL_PORT = 587
+
+# DEFAULT_FROM_EMAIL = 'astroevents0@gmail.com'  # Email that users will see
+
+
+# #configuration For Sending Email with SMTP
+# EMAIL_HOST          = 'smtp.gmail.com'
+# EMAIL_BACKEND       = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST_USER     = "bryansine1738@gmail.com" # Email
+# EMAIL_HOST_PASSWORD = 'gqemhqaxznoyykgs' # Password
+# EMAIL_USE_TLS       = True
+# EMAIL_PORT          = 587
 
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

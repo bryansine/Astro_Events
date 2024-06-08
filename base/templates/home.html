@@ -113,6 +113,24 @@
         .btn:hover {
             background-color: #e5533c;
         }
+                /* Message styles */
+        .messages {
+            margin: 20px auto;
+            padding: 10px;
+            width: 30%;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .message {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: green !important;
+            color: white;
+            border-radius: 5px;
+        }
+        /* events styles */
 
         .events-highlights {
             padding: 20px;
@@ -168,7 +186,7 @@
             bottom: 0;
             width: 100%;
         }
-                /* Animated phrase styles */
+        /* Animated phrase styles */
         .animated-phrase {
             font-size: 2.5em;
             font-weight: bold;
@@ -204,15 +222,22 @@
         </div>
     </div>
     <div class="content">
+        <div id="messages" class="messages">
+            {% for message in messages %}
+            <div class="message">{{ message }}</div>
+            {% endfor %}
+
+        </div>
         <section class="hero">
             <h1>Welcome to Astro Events</h1>
             <p>Discover amazing events, experience unforgettable moments, and enjoy everything we have to offer.</p>
             <a href="{% url 'signup' %}" class="btn">Get Started</a>
         </section>
-          <!-- Animated phrase section -->
-    <div class="animated-phrase">
-        Embrace the Magic of Every Event!
-    </div>
+
+        <!-- Animated phrase section -->
+        <div class="animated-phrase">
+            Embrace the Magic of Every Event!
+        </div>
 
         <section class="events-highlights">
             <h2>Upcoming Events</h2>
@@ -250,5 +275,16 @@
     <footer>
         &copy; 2024 Astro Events. All rights reserved.
     </footer>
+    <script>
+        // Js 
+        window.addEventListener('DOMContentLoaded', (event) => {
+            setTimeout(() => {
+                const messages = document.getElementById('messages');
+                if (messages) {
+                    messages.style.display = 'none';
+                }
+            }, 4000); //3 seconds
+        });
+    </script>
 </body>
 </html>

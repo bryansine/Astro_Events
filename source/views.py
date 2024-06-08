@@ -4,8 +4,8 @@ from .forms import SignUpForm, EmailAuthenticationForm
 from django.shortcuts import redirect, render, redirect
 
 
-def home(request):
-    return render(request, 'home.html')
+# def home(request):
+#     return render(request, 'home.html')
 
 def login_view(request): # login_view function
     if request.method == 'POST':
@@ -17,7 +17,7 @@ def login_view(request): # login_view function
 
             if user is not None:
                 login(request, user) # login user
-                return redirect('home:home')  
+                return redirect('home:home')
     else:
         form = EmailAuthenticationForm()
     return render(request, 'registration/login.html', { 'form': form })
@@ -40,7 +40,7 @@ def signUpView(request): # signup function
             # Log the user in
             login(request, user)
 
-            return redirect('home:home')  # 
+            return redirect('home:home')
     else:
         form = SignUpForm()
 
