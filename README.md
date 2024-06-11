@@ -32,27 +32,27 @@ AstroEventsSystem is a web-based application for managing event ticketing. Users
 
 ## Installation
 
+## Installation
+
 To set up the project locally, follow these steps:
-# Clone the project repository: git clone https://github.com/bryansine/Astro_events.git
 
-# Navigate to the project directory: cd AstroEventsSystem
-
-# Create a Virtual Environment : python3 -m venv myvenv
-
-# Activate the Virtual Environment (Windows): myvenv\Scripts\activate
-
-# Activate the Virtual Environment (macOS/Linux): source myvenv/bin/activate
-
-# Install Django : pip install django
-
-# Install Required Packages : pip install -r requirements.txt
-
-# Migrate the Database : python manage.py migrate
-
-# Create a Super User : python manage.py createsuperuser
-
-# Start the Development Server : python3 manage.py runserver
-
+1. **Clone the project repository:**
+ 
+   ```git clone https://github.com/bryansine/Astro_events.git```
+2.  Navigate to the project directory:
+  ``` cd AstroEventsSystem```
+3. Create a Virtual Environment:
+ ``` python3 -m venv myvenv```
+4.  Activate the Virtual Environment (macOS/Linux):
+  ```source myvenv/bin/activate```
+5.  Install Required Packages:
+ ``` pip install -r requirements.txt```
+6.  Migrate the Database:
+  ```python manage.py migrate```
+7.  Create a Super User:
+  ```python manage.py createsuperuser```
+8.  Start the Development Server:
+ ``` python3 manage.py runserver```
 
 
 ## Usage
@@ -89,3 +89,9 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 **Author:** Bryan Sine
 **LinkedIn:** [Bryan Sine](https://www.linkedin.com/in/bryansine)
+
+
+## screenshot
+![A screenshot](images/attendee.png)
+
+
