@@ -92,6 +92,8 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 
 ## screenshot
-![A screenshot](images/attendee.png)
+![A screenshot](images/attendee.png)  Preview
+![Screenshot (4)](https://github.com/bryansine/AstroEventsSystem/assets/98818309/c54ddc78-4a2b-496b-acd8-d23d875397fe)
+
 
 
