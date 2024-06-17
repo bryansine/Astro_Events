@@ -136,6 +136,6 @@ def eventDeleteView(request, id):
     template = loader.get_template('events/eventEdit.html')
     context = {
         'event'  : event,
-    }
+              }
     return HttpResponse(template.render(context, request))
 
